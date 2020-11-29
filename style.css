@@ -46,6 +46,10 @@ form {
     grid-row-gap: 10px;
 }
 
+label {
+    white-space: nowrap;
+}
+
 label[for="search-field"] {
     grid-area: 1 / 1 / 2 / 2;
 }
