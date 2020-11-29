@@ -15,10 +15,10 @@
 	  <label for="search-field">Search query:</label>
 	  <input v-model="searchText" v-focus type="text" id="search-field" required />
 
-	  <label for="retmax-field">Maximum number of results:</label>
+	  <label for="retmax-field">Result limit:</label>
 	  <input v-model="retmax" type="number" min="1" max="200" placeholder="1-200; default: 20" id="retmax-field" />
 
-	  <label for="release-age">Maximum days since publish:</label>
+	  <label for="release-age">Publication age limit (days):</label>
 	  <input v-model="reldate" type="number" min="1" id="release-age" placeholder="default: no maximum" />
 
           <label for="author">Author (optional):</label>

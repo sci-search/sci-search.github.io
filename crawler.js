@@ -39,6 +39,7 @@ window.onload = function() {
 	methods: {
 	    sendSearchRequest() {
 		const context = this;
+		this.results = [];
 		if(this.retmax > 200)
 		    this.retmax = 200;
 		let url = baseURL + searchURL + 'db=' + db + '&retmode=' + retmode + '&term=' + this.author + '[Author]' + this.journal + '[Journal]' + this.searchText + "&retmax=" + this.retmax;
@@ -117,7 +118,12 @@ window.onload = function() {
 		    xhr.responseType = "document";
 		    xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-			    let abstr = xhr.response.getElementById("enc-abstract").firstElementChild.innerHTML;
+			    let abstr = "";
+			    try {
+				abstr = xhr.response.getElementById("enc-abstract").firstElementChild.innerHTML;
+			    } catch(e) {
+
+			    }
 			    context.results.push({
 				id: currentId,
 				pubdate: pubdate,
