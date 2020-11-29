@@ -52,7 +52,7 @@
 	  <li v-for="result in results">
 	    <a :href=" getURL + result.doi" @mouseover="abstractText = result.abstr">
 	      <span class="result-title" :title="result.title"> {{ result.title }} </span>
-	      <span class="result-authors" :title="result.authors"> {{ result.authors.join(", ") }} </span>
+	      <span class="result-authors" :title="result.authors.join(', ')"> {{ result.authors.join(", ") }} </span>
 	      <span class="result-pubdate" :title="result.pubdate"> {{ result.pubdate }} </span>
 	    </a>
 	  </li>
