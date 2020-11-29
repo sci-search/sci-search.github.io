@@ -120,7 +120,7 @@ window.onload = function() {
 			if (this.readyState == 4 && this.status == 200) {
 			    let abstr = "";
 			    try {
-				abstr = xhr.response.getElementById("enc-abstract").firstElementChild.innerHTML;
+				abstr = xhr.response.getElementById("enc-abstract").firstElementChild.innerText;
 			    } catch(e) {
 
 			    }

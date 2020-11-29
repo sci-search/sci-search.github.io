@@ -14,9 +14,11 @@ body {
 }
 
 fieldset {
+    padding: 20px;
     margin: auto;
     margin-top: 10px;
-    max-width: 600px;
+    margin-left: 50px;
+    margin-right: 50px;
     color: #F6F7EB;
     background-color: #393E41;
     border: 1px solid rgba(0,0,0,1);
@@ -112,6 +114,16 @@ label[for="journal"] {
     color: #F6F7EB;
 }
 
+#checkbox-wrapper {
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#checkbox-wrapper > input[type="checkbox"] {
+    transform: scale(2);
+}
+
 /*
 #search-button {
     grid-area: 4 / 2 / 5 / 3;
@@ -126,16 +138,20 @@ label[for="journal"] {
 
 #search-button {
     cursor: pointer;
-    width: 30%;
-    padding: 5px;
+    padding: 15px 40px;
     font-size: 1.3em;
     margin: auto;
     display: block;
     border-radius: 20px;
     border: 0px;
     background-color: #3F88C5;
-    margin-top: 10px;
+    margin-top: 20px;
     color: #F6F7EB;
+}
+
+#search-button:hover {
+    background-color: #F6F7Eb;
+    color: #3F88C5;
 }
 
 ul {
@@ -144,6 +160,7 @@ ul {
     list-style-type: none;
     overflow: scroll;
     max-height: 100%;
+    padding: 15px;
 }
 
 li {

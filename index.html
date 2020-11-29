@@ -27,11 +27,13 @@
           <label for="journal">Journal (optional):</label>
           <input v-model="journal" type="text" id="journal" />
 
-	  <label for="checkbox">Sci-Hub source:</label>
-	  <input v-model="scihubFlag" type="checkbox" name="source" id="checkbox" />
 	</form>
 	<input @click="sendSearchRequest" type="button" id="search-button" value="Search" />
       </fieldset>
+      <div id="checkbox-wrapper">
+	<label for="checkbox">Sci-Hub source:  </label>
+	<input v-model="scihubFlag" type="checkbox" name="source" id="checkbox" />
+      </div>
     </div>
     <div id="abstract-viewer">
       <p style="max-height:100%"> {{ abstractText }} </p>
@@ -39,18 +41,25 @@
     
     <div id="container">
       <p id="result-description">Displaying 0 out of 0 results.</p>
-   
-      <ul id="results">
-	<li v-for="result in results">
-	  <a :href=" getURL + result.doi" @mouseover="abstractText = result.abstr">
-	    <span class="result-title" :title="result.title"> {{ result.title }} </span>
-	    <span class="result-authors" :title="result.authors"> {{ result.authors.join(", ") }} </span>
-	    <span class="result-pubdate" :title="result.pubdate"> {{ result.pubdate }} </span>
-	  </a>
-	</li>
-      </ul>
+      <div style="
+		  border: 2px dotted black;
+		  border-radius: 20px;
+		  height: 100%;
+		  padding: 10px;
+		  padding-bottom: 30px;
+		  box-sizing: border-box;">
+	<ul id="results">
+	  <li v-for="result in results">
+	    <a :href=" getURL + result.doi" @mouseover="abstractText = result.abstr">
+	      <span class="result-title" :title="result.title"> {{ result.title }} </span>
+	      <span class="result-authors" :title="result.authors"> {{ result.authors.join(", ") }} </span>
+	      <span class="result-pubdate" :title="result.pubdate"> {{ result.pubdate }} </span>
+	    </a>
+	  </li>
+	</ul>
+      </div>
       <footer>
-	<p title='"The public has a distorted view of science because children are taught in school that science is a collection of firmly established truths. In fact, science is not a collection of truths. It is a continuing exploration of mysteries." - Freeman John Dyson'>Hover.</p>
+	<p title='"The public has a distorted view of science because children are taught in school that science is a collection of firmly established truths. In fact, science is not a collection of truths. It is a continuing exploration of mysteries." - Freeman John Dyson'>👁</p>
       </footer>
     </div>
   </body>
