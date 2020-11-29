@@ -2,52 +2,52 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@next"></script>
     <script src="crawler.js"></script>
     <meta charset="UTF-8" />
     <title>Sci-Hub Search</title>
   </head>
-  <body onload="init()">
+  <body>
     <div id="wrapper">
       <fieldset>
 	<legend>PubMed Search</legend>
 	<form>
 	  <label for="search-field">Search query:</label>
-	  <input type="text" id="search-field" required autofocus />
+	  <input v-model="searchText" v-focus type="text" id="search-field" required />
 
 	  <label for="retmax-field">Maximum number of results:</label>
-	  <input type="number" min="1" max="200" placeholder="1-200; default: 20" id="retmax-field" />
+	  <input v-model="retmax" type="number" min="1" max="200" placeholder="1-200; default: 20" id="retmax-field" />
 
 	  <label for="release-age">Maximum days since publish:</label>
-	  <input type="number" min="1" id="release-age" placeholder="default: no maximum" />
+	  <input v-model="reldate" type="number" min="1" id="release-age" placeholder="default: no maximum" />
 
           <label for="author">Author (optional):</label>
-          <input type="text" id="author" />
+          <input v-model="author" type="text" id="author" />
 
           <label for="journal">Journal (optional):</label>
-          <input type="text" id="journal" />
+          <input v-model="journal" type="text" id="journal" />
 
-	  <label for="source-original">Original source:</label>
-	  <input type="radio" name="source" id="source-original" checked />
-	  <label for="source-scihub">Sci-Hub source:</label>
-	  <input type="radio" name="source" id="source-scihub" />
+	  <label for="checkbox">Sci-Hub source:</label>
+	  <input v-model="scihubFlag" type="checkbox" name="source" id="checkbox" />
 	</form>
-	<input type="button" id="search-button" value="Search" />
+	<input @click="sendSearchRequest" type="button" id="search-button" value="Search" />
       </fieldset>
     </div>
     <div id="abstract-viewer">
-      <p></p>
+      <p style="max-height:100%"> {{ abstractText }} </p>
     </div>
     
     <div id="container">
       <p id="result-description">Displaying 0 out of 0 results.</p>
-      <br />
-      <p class="header header-title"><strong>Title</strong></p><!--
-   --><p class="header header-authors"><strong>Authors</strong></p><!--
-   --><p class="header header-pubdate"><strong>Publish Date</strong></p><!--
-   --><p class="header header-id"><strong>PMID</strong></p><!--
-   --><p class="header header-doi"><strong>DOI</strong></p>
-      
+   
       <ul id="results">
+	<li v-for="result in results">
+	  <a :href=" getURL + result.doi" @mouseover="abstractText = result.abstr">
+	    <span class="result-title" :title="result.title"> {{ result.title }} </span>
+	    <span class="result-authors" :title="result.authors"> {{ result.authors.join(", ") }} </span>
+	    <span class="result-pubdate" :title="result.pubdate"> {{ result.pubdate }} </span>
+	  </a>
+	</li>
       </ul>
       <footer>
 	<p title='"The public has a distorted view of science because children are taught in school that science is a collection of firmly established truths. In fact, science is not a collection of truths. It is a continuing exploration of mysteries." - Freeman John Dyson'>Hover.</p>
