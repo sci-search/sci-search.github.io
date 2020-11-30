@@ -109,6 +109,8 @@ label[for="journal"] {
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .header {
@@ -119,13 +121,11 @@ label[for="journal"] {
 }
 
 #checkbox-wrapper {
-    font-size: 1.5em;
     margin-top: 20px;
     text-align: center;
 }
 
 #checkbox-wrapper > input[type="checkbox"] {
-    transform: scale(2);
 }
 
 /*
@@ -240,4 +240,15 @@ footer {
     bottom: 0px;
     text-align: center;
     width: 100%;
+}
+
+.blink {
+    animation-name: blinker;
+    animation-duration: 0.6s;
+}
+
+@keyframes blinker {
+    0% {opacity: 100%}
+    50% {opacity: 30%}
+    100% {opacity: 100%}
 }

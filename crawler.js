@@ -35,6 +35,18 @@ window.onload = function() {
 		    return "https://doi.org/";
 	    }
 	},
+
+	watch: {
+	    scihubFlag: function() {
+		let lis = document.getElementsByTagName("li");
+		for(let i = 0; i < lis.length; i++) {
+		    lis[i].classList.toggle("blink");
+		    setTimeout(function() {
+			lis[i].classList.toggle("blink");
+		    }, 500);
+		}	
+	    }
+	},
 	
 	methods: {
 	    sendSearchRequest() {
